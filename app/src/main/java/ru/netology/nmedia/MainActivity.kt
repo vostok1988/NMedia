@@ -1,78 +1,50 @@
 package ru.netology.nmedia
 
-import android.os.Build
-import android.os.Bundle
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import ru.netology.nmedia.data.Post
+import android.os.Bundle
 import ru.netology.nmedia.databinding.ActivityMainBinding
-import java.math.RoundingMode
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
+import ru.netology.nmedia.dto.Post
+
 
 class MainActivity : AppCompatActivity() {
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val post = Post(
-            postHeader = "Нетология. Университет интернет-профессий",
-            date = LocalDateTime.now()
-                .format(
-                    DateTimeFormatter
-                        .ofLocalizedDateTime(FormatStyle.MEDIUM)
-                ),
-            isLiked = false
+            id = 1,
+            author = "Нетология. Университет интернет-профессий будущего",
+            content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
+            published = "21 мая в 18:36",
+            likedByMe = false
         )
-
-        var countLikes = 1399999
-        var countShares = 999_999
-        val countViews = "13"
-
         with(binding) {
-            postHeader.text = post.postHeader
-            postDate.text = post.date
-            likesCount.text = slice(countLikes)
-            shareCount.text = slice(countShares)
-            viewsCount.text = countViews
+            amountOfLikes?.text = resFormat(post.likes)
+            amountOfShares?.text = resFormat(post.shares)
+            amountOfViews?.text = resFormat(post.views)
 
-            if (post.isLiked) {
-                likesButton.setImageResource(R.drawable.ic_baseline_favorite_24)
+            author.text = post.author
+            published.text = post.published
+            content.text = post.content
+
+            if (post.likedByMe) {
+                likes?.setImageResource(R.drawable.ic_liked_24)
             }
 
-            likesButton.setOnClickListener {
-                post.isLiked = !post.isLiked
-                likesButton.setImageResource(
-                    if (post.isLiked)
-                        R.drawable.ic_baseline_favorite_24
-                    else
-                        R.drawable.ic_baseline_favorite_border_24
+            likes?.setOnClickListener {
+                post.likedByMe = !post.likedByMe
+                likes.setImageResource(
+                    if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_baseline_favorite_border_24
                 )
-                if (post.isLiked) countLikes += 1 else countLikes -= 1
-                likesCount.text = slice(countLikes)
+                if (post.likedByMe) post.likes++ else post.likes--
+                amountOfLikes?.text = resFormat(post.likes)
             }
 
-            shareButton.setOnClickListener {
-                countShares++
-                shareCount.text = slice(countShares)
+            shares?.setOnClickListener {
+                post.shares++
+                amountOfShares?.text = resFormat(post.shares)
             }
         }
-    }
-}
-
-fun slice(count: Int): String {
-    return when (count) {
-        in 1_000..999_999 ->
-            if ((count.toDouble() / 1_000).toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble() * 10 % 10 == 0.0)
-                (count / 1_000).toString() + "K"
-            else ((count.toDouble() / 1_000).toBigDecimal().setScale(1, RoundingMode.DOWN)).toString() + "K"
-        in 1_000_000..999_999_999 ->
-            if ((count.toDouble() / 1_000_000).toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble() * 10 % 10 == 0.0)
-                (count / 1_000_000).toString() + "M"
-            else ((count.toDouble() / 1_000_000).toBigDecimal().setScale(1, RoundingMode.DOWN)).toString() + "M"
-        else -> count.toString()
     }
 }
