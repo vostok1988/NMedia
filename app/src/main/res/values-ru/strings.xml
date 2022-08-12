@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">НМедиа</string>
-    <string name="avatar_description">Аватар автора</string>
-    <string name="description_post_menu">Меню</string>
-    <string name="description_likes">Нравится</string>
-    <string name="description_shares">Поделиться</string>
-    <string name="description_views">Просмотры</string>
-    <string name="description_share_post">Поделиться</string>
+    <string name="app_name">НМедия</string>
+    <string name="nmedia">НМедия!</string>
+    <string name="author_avatar">Аватар автора</string>
     <string name="remove">Удалить</string>
     <string name="post_text">Текст поста</string>
-    <string name="save">Сохранить</string>
-    <string name="edit">Редактировать</string>
-    <string name="editImage">Изображение редактирования</string>
-    <string name="edit_message">Редактирование</string>
-    <string name="cancelEditButton">Кнопка отмены</string>
-    <string name="EmptyText">Нет текста</string>
+    <string name="edit">Изменить</string>
+    <string name="edit_message">Изменить сообщение</string>
+    <string name="chooser_share_post">Поделиться</string>
     <string name="description_post_save">Сохранить</string>
-    <string name="add_post">Добавить пост</string>
+    <string name="add_post" >Добавить</string>
+    <string name="chooser_play_video">Проиграть</string>
 </resources>
