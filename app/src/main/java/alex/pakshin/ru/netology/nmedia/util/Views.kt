@@ -16,8 +16,3 @@ internal fun View.showKeyboard() {
     imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,/*flags =*/0)
 }
 
-internal fun View.resetEdit() {
-    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    imm.
-    hideSoftInputFromWindow(windowToken,/*flags =*/0)
-}

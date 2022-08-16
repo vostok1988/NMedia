@@ -9,6 +9,8 @@ import alex.pakshin.ru.netology.nmedia.util.SingleLiveEvent
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 class PostViewModel(
     application: Application
@@ -21,9 +23,11 @@ class PostViewModel(
 
     val videoUrl = SingleLiveEvent<String?>()
 
-    val navigatePostContentScreenEvent = SingleLiveEvent<Unit>()
+    val navigatePostContentScreenEvent = SingleLiveEvent<String>()
 
-    val currentPost = MutableLiveData<Post?>(null)
+    val navigatePostDetails  = SingleLiveEvent<Long>()
+
+    var currentPost = MutableLiveData<Post?>(null)
 
     fun onSaveButtonClicked(content: String) {
         if (content.isBlank()) return
@@ -53,12 +57,17 @@ class PostViewModel(
 
     override fun onEditClicked(post: Post) {
         currentPost.value = post
-        navigatePostContentScreenEvent.call()
+        navigatePostContentScreenEvent.value = post.content
     }
 
     override fun onPlayClicked(post: Post) {
         videoUrl.value = post.url
     }
+
+    override fun onPostClicked(post: Post) {
+        navigatePostDetails.value = post.id
+    }
+
     //endregion
 
     fun onAddButtonClicked() {

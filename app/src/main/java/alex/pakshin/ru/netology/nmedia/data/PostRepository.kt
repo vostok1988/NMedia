@@ -13,6 +13,8 @@ interface PostRepository {
 
     fun delete(postId: Long)
 
+
+
     companion object{
         const val NEW_POST_ID = 0L
     }
