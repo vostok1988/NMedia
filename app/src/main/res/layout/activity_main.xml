@@ -7,13 +7,12 @@
     tools:context=".activity.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/posts_recycler_view"
+        android:id="@+id/postRecycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="170dp"
-        tools:listitem="@layout/post_list_item" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/post" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -23,7 +22,5 @@
         android:contentDescription="@string/add_post"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_add_24dp"
-        />
-
+        app:srcCompat="@drawable/ic_add_24dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
