@@ -3,6 +3,7 @@ package alex.pakshin.ru.netology.nmedia.adapter
 import alex.pakshin.ru.netology.nmedia.data.Post
 import alex.pakshin.ru.netology.nmedia.R
 import alex.pakshin.ru.netology.nmedia.databinding.PostBinding
+import alex.pakshin.ru.netology.nmedia.util.getDecimalFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -60,6 +61,9 @@ internal class PostAdapter(
                 videoPreview.setOnClickListener {
                     listener.onPlayClicked(post)
                 }
+                postCard.setOnClickListener{
+                    listener.onPostClicked(post)
+                }
             }
         }
 
@@ -70,20 +74,13 @@ internal class PostAdapter(
                 date.text = post.published
                 content.text = post.content
                 like.isChecked = post.liked
-                like.text = getDecimalFormat(post.likeCount)
+                like.text =  getDecimalFormat(post.likeCount)
                 share.text = getDecimalFormat(post.shareCount)
                 if (!post.url.isNullOrBlank()) videoView.visibility = View.VISIBLE
             }
         }
 
-        private fun getDecimalFormat(count: Int): String = when {
-            count < 1000 -> count.toString()
-            (count < 10000 && count % 1000 / 100 == 0) || count in 10000..1000000 -> "${(count / 1000)}K"
-            count < 10000 -> "${(count / 100 / 10.0)}K"
-            (count < 10000000 && count % 1000000 / 100000 == 0) || count in 10000000..1000000000 -> "${(count / 1000000)}M"
-            count < 10000000 -> "${(count / 100000 / 10.0)}M"
-            else -> ""
-        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

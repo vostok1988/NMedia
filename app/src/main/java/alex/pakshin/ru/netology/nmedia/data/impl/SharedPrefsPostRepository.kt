@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import java.lang.RuntimeException
 import kotlin.properties.Delegates
 
 class SharedPrefsPostRepository(application: Application) : PostRepository {

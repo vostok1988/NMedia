@@ -1,4 +1,4 @@
-package alex.pakshin.ru.netology.nmedia.activity
+package alex.pakshin.ru.netology.nmedia.ui
 
 import alex.pakshin.ru.netology.nmedia.databinding.IntentHandlerActivityBinding
 import android.content.Intent
