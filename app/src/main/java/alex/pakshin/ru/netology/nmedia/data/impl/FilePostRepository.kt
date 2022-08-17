@@ -8,6 +8,7 @@ import androidx.core.content.edit
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.lang.RuntimeException
 import kotlin.properties.Delegates
 
 class FilePostRepository(private val application: Application) : PostRepository {
@@ -88,6 +89,8 @@ class FilePostRepository(private val application: Application) : PostRepository 
         posts =
             posts.filter { it.id != postId }
     }
+
+
 
     private companion object {
         const val NEXT_ID_PREFS_KEY = "nextId"
