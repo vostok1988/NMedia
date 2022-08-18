@@ -43,8 +43,6 @@ class PostContentFragment : Fragment() {
     companion object {
         const val REQUEST_KEY = "requestKey"
         const val RESULT_KEY = "postContent"
-
-        private const val INITIAL_CONTENT_ARGUMENTS = "initialContent"
     }
 
 }

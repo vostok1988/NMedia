@@ -3,19 +3,21 @@ package alex.pakshin.ru.netology.nmedia.viewModel
 import alex.pakshin.ru.netology.nmedia.adapter.PostInteractionListener
 import alex.pakshin.ru.netology.nmedia.data.Post
 import alex.pakshin.ru.netology.nmedia.data.PostRepository
-import alex.pakshin.ru.netology.nmedia.data.impl.FilePostRepository
-import alex.pakshin.ru.netology.nmedia.data.impl.SharedPrefsPostRepository
+import alex.pakshin.ru.netology.nmedia.data.impl.SQLiteRepository
+import alex.pakshin.ru.netology.nmedia.db.AppDb
 import alex.pakshin.ru.netology.nmedia.util.SingleLiveEvent
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 
 class PostViewModel(
     application: Application
 ) : AndroidViewModel(application), PostInteractionListener {
-    private val repository: PostRepository = FilePostRepository(application)
+    private val repository: PostRepository = SQLiteRepository(
+        dao = AppDb.getInstance(
+            context = application
+        ).postDao
+    )
 
     val data by repository::data
 
@@ -25,14 +27,14 @@ class PostViewModel(
 
     val navigatePostContentScreenEvent = SingleLiveEvent<String>()
 
-    val navigatePostDetails  = SingleLiveEvent<Long>()
+    val navigatePostDetails = SingleLiveEvent<Long>()
 
-    var currentPost = MutableLiveData<Post?>(null)
+    private var currentPost : Post? = null
 
     fun onSaveButtonClicked(content: String) {
         if (content.isBlank()) return
 
-        val post = currentPost.value?.copy(
+        val post = currentPost?.copy(
             content = content
         ) ?: Post(
             id = PostRepository.NEW_POST_ID,
@@ -42,7 +44,7 @@ class PostViewModel(
             url = "https://www.youtube.com/watch?v=5qap5aO4i9A"
         )
         repository.save(post)
-        currentPost.value = null
+        currentPost = null
     }
 
     //region PostInteractionListener
@@ -56,7 +58,7 @@ class PostViewModel(
     override fun onRemoveClicked(post: Post) = repository.delete(post.id)
 
     override fun onEditClicked(post: Post) {
-        currentPost.value = post
+        currentPost = post
         navigatePostContentScreenEvent.value = post.content
     }
 

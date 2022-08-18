@@ -2,27 +2,14 @@ package alex.pakshin.ru.netology.nmedia.data.impl
 
 import alex.pakshin.ru.netology.nmedia.data.Post
 import alex.pakshin.ru.netology.nmedia.data.PostRepository
+import alex.pakshin.ru.netology.nmedia.db.PostDao
 import androidx.lifecycle.MutableLiveData
-import java.lang.RuntimeException
 
-class InMemoryPostRepository : PostRepository {
+class SQLiteRepository(
+    private val dao: PostDao
+) : PostRepository {
 
-    private var nextId = GENERATED_POST_AMOUNT.toLong()
-
-    override val data =
-        MutableLiveData(
-            List(GENERATED_POST_AMOUNT) {
-                Post(
-                    it + 1L,
-                    "Author",
-                    "Very important message $it",
-                    "18.05.22",
-                    false,
-                    999,
-                    3
-
-                )
-            })
+    override val data = MutableLiveData(dao.getAll())
 
     private val posts
         get() = checkNotNull(data.value) {
@@ -30,6 +17,7 @@ class InMemoryPostRepository : PostRepository {
         }
 
     override fun like(postId: Long) {
+        dao.likeById(postId)
         data.value =
             posts.map {
                 if (it.id == postId)
@@ -41,6 +29,7 @@ class InMemoryPostRepository : PostRepository {
     }
 
     override fun share(postId: Long) {
+        dao.shareById(postId)
         data.value = posts.map {
             if (it.id == postId)
                 it.copy(shareCount = it.shareCount + 1) else it
@@ -48,25 +37,22 @@ class InMemoryPostRepository : PostRepository {
     }
 
     override fun save(post: Post) {
-        if (post.id == PostRepository.NEW_POST_ID) insert(post) else update(post)
-    }
-
-    private fun insert(post: Post) {
-        data.value = listOf(post.copy(id = ++nextId)) + posts
-    }
-
-    private fun update(post: Post) {
-        data.value = posts.map {
-            if (it.id == post.id) post else it
+        val id = post.id
+        val saved = dao.save(post)
+        data.value = if (id == PostRepository.NEW_POST_ID)
+            listOf(saved) + posts
+        else {
+            posts.map {
+                if (it.id == id) saved else it
+            }
         }
     }
 
+
     override fun delete(postId: Long) {
+        dao.removeById(postId)
         data.value =
             posts.filter { it.id != postId }
     }
 
-    private companion object {
-        const val GENERATED_POST_AMOUNT = 10
-    }
 }
