@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Theme.NMedia" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.AndroidStudioProject" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -14,39 +14,26 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Widget.AppTheme.LikeButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+    <style name="Widget.AppTheme.LikeCheckbox" parent="Widget.MaterialComponents.Button.TextButton.Icon">
         <item name="iconTint">@color/like_checkbox_tint</item>
-        <item name="backgroundTint">@android:color/transparent</item>
-        <item name="android:textColor">?attr/colorControlNormal</item>
-        <item name="rippleColor">@android:color/transparent</item>
-        <item name="minHeight">@dimen/icon_button_min_size</item>
-        <item name="minWidth">@dimen/icon_button_min_size</item>
+        <item name="android:minWidth">@dimen/icon_button_min_size</item>
+        <item name="android:minHeight">@dimen/icon_button_min_size</item>
     </style>
 
-    <style name="Widget.AppTheme.ShareButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+    <style name="Widget.AppTheme.ShareCheckBox" parent="Widget.MaterialComponents.Button.TextButton.Icon">
         <item name="iconTint">?attr/colorControlNormal</item>
-        <item name="backgroundTint">@android:color/transparent</item>
-        <item name="android:textColor">?attr/colorControlNormal</item>
-        <item name="minHeight">@dimen/icon_button_min_size</item>
-        <item name="minWidth">@dimen/icon_button_min_size</item>
+        <item name="android:minWidth">@dimen/icon_button_min_size</item>
+        <item name="android:minHeight">@dimen/icon_button_min_size</item>
     </style>
 
-    <style name="Widget.AppTheme.OptionsButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+    <style name="Widget.App.Button.OptionsCheckBox" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="iconTint">?attr/colorControlNormal</item>
-        <item name="backgroundTint">@color/options_background_tint</item>
-        <item name="android:textColor">?attr/colorControlNormal</item>
         <item name="iconPadding">0dp</item>
-        <item name="minHeight">@dimen/icon_button_min_size</item>
-        <item name="minWidth">@dimen/icon_button_min_size</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
     </style>
-
-    <style name="Widget.AppTheme.PlayButton" parent="Widget.MaterialComponents.Button.Icon">
-        <item name="iconTint">@color/white</item>
-        <item name="backgroundTint" >?attr/colorControlNormal</item>
-        <item name="android:textColor">?attr/colorControlNormal</item>
-        <item name="iconPadding">0dp</item>
-        <item name="minHeight">@dimen/icon_button_min_size</item>
-        <item name="minWidth">@dimen/icon_button_min_size</item>
-    </style>
-
 </resources>
