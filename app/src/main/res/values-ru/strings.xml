@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">НМедиа</string>
-    <string name="nmedia">НМедиа!</string>
-    <string name="avatar_description">Аватар автора</string>
-    <string name="thousands">%1$sТ</string>
-    <string name="million">%1$sМ</string>
+    <string name="out_string">НМедиа!</string>
+    <string name="avatar_place">Место для аватара</string>
+    <string name="show_menu">Показать меню</string>
+    <string name="like_button">Нажмите, если нравится</string>
+    <string name="repost_button">Нажмите, чтобы поделиться</string>
+    <string name="watches">Количество просмотров</string>
     <string name="remove">Удалить</string>
-    <string name="post_text">Текст поста…</string>
-    <string name="menu_edit">Изменить</string>
-    <string name="edit_message">Редактировать текст</string>
-    <string name="description_post_like">Лайк поста</string>
-    <string name="description_post_share">Поделиться постом</string>
-    <string name="description_post_options">Меню поста</string>
-    <string name="chooser_share_post">Поделиться</string>
-    <string name="description_post_save">Сохранить</string>
-    <string name="add_post">Добавить пост</string>
+    <string name="edit">Редактировать</string>
+    <string name="hint_new_content">Введите текст для нового поста</string>
+    <string name="save_button">Сохранить</string>
+    <string name="empty_content">Заполните контент для поста</string>
+    <string name="decline_button">Отменить изменения</string>
+    <string name="video_button">Запустить видео</string>
+    <string name="chooser_share_post">Поделиться…</string>
+    <string name="channel_remote_name">Уведомления с сервера</string>
+    <string name="channel_remote_description">Уведомления с сервера</string>
+    <string name="google_play_unavailable">Google Api недоступен</string>
+    <string name="notification_user_liked">Пользователю %1$s нравится %2$s пост</string>
+    <string name="notification_user_repost">Пользователь %1$s поделился %2$s\'s постом</string>
+    <string name="notification_unknown">Пришло новое уведомление с сервера…</string>
+    <string name="notification_new_post">Пользователь %1$s добавил новый пост:</string>
+    <string name="unknown_message_format">Не удалось распознать сообщение</string>
+    <string name="msg_token_fmt">token: %1$s</string>
 </resources>

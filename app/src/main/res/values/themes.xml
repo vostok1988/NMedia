@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Theme.AndroidStudioProject" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Nmedia" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -13,27 +13,23 @@
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-
-    <style name="Widget.AppTheme.LikeCheckbox" parent="Widget.MaterialComponents.Button.TextButton.Icon">
-        <item name="iconTint">@color/like_checkbox_tint</item>
-        <item name="android:minWidth">@dimen/icon_button_min_size</item>
-        <item name="android:minHeight">@dimen/icon_button_min_size</item>
+    <style name="Widget.AppTheme.LikeButton" parent="Widget.MaterialComponents.Button">
+        <item name="iconTint">@color/red</item>
+        <item name="minWidth">@dimen/icon_button_min_size</item>
+        <item name="minHeight">@dimen/icon_button_min_size</item>
+        <item name="backgroundTint">@color/purple_100</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+        <item name="elevation">@dimen/elevation</item>
+        <item name="borderWidth">@dimen/zero_pd</item>
+    </style>
+    <style name="Widget.AppTheme.RepostButton" parent="Widget.AppTheme.LikeButton">
+        <item name="iconTint">@color/purple_700</item>
+    </style>
+    <style name="Widget.AppTheme.MenuButton" parent="Widget.AppTheme.RepostButton">
+        <item name="maxWidth">@dimen/icon_button_min_size</item>
+    </style>
+    <style name="Widget.AppTheme.FAButton" parent="Widget.AppTheme.RepostButton">
+        <item name="backgroundTint">@color/teal_200</item>
     </style>
 
-    <style name="Widget.AppTheme.ShareCheckBox" parent="Widget.MaterialComponents.Button.TextButton.Icon">
-        <item name="iconTint">?attr/colorControlNormal</item>
-        <item name="android:minWidth">@dimen/icon_button_min_size</item>
-        <item name="android:minHeight">@dimen/icon_button_min_size</item>
-    </style>
-
-    <style name="Widget.App.Button.OptionsCheckBox" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="iconTint">?attr/colorControlNormal</item>
-        <item name="iconPadding">0dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:paddingLeft">12dp</item>
-        <item name="android:paddingRight">12dp</item>
-        <item name="android:minWidth">48dp</item>
-        <item name="android:minHeight">48dp</item>
-    </style>
 </resources>

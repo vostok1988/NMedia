@@ -1,18 +1,27 @@
 <resources>
-    <string name="app_name">Nmedia</string>
-    <string name="nmedia">NMedia!</string>
-    <string name="avatar_description">Author avatar</string>
-    <string name="thousands">%1$sK</string>
-    <string name="million">%1$sM</string>
+    <string name="app_name">nmedia</string>
+    <string name="out_string">NMedia!</string>
+    <string name="avatar_place">Place for avatar</string>
+    <string name="show_menu">Show menu</string>
+    <string name="like_button">Click to like\dislike</string>
+    <string name="repost_button">Click to repost</string>
+    <string name="watches">Watches count</string>
     <string name="remove">Remove</string>
-    <string name="post_text">Post Text…</string>
-    <string name="menu_edit">Edit</string>
-    <string name="edit_message">Edit message</string>
-    <string name="description_post_like">Post like</string>
-    <string name="description_post_share">Post share</string>
-    <string name="description_post_options">Post options</string>
+    <string name="edit">Edit</string>
+    <string name="hint_new_content">Enter new post</string>
+    <string name="save_button">Click to save</string>
+    <string name="empty_content">Please feel content for post</string>
+    <string name="decline_button">Click to discard changes</string>
+    <string name="video_button">Click to play video</string>
     <string name="chooser_share_post">Share post</string>
-    <string name="description_post_save">Save</string>
-    <string name="add_post">Add post</string>
-
+    <string name="channel_remote_name">Server notifications</string>
+    <string name="channel_remote_description">Notifications from remote server</string>
+    <string name="google_play_unavailable">Google Api Unavailable</string>
+    <string name="notification_user_liked">User %1$s liked %2$s\'s post</string>
+    <string name="notification_user_repost">User %1$s repost %2$s\'s post</string>
+    <string name="notification_new_post">User %1$s create new post</string>
+    <string name="notification_unknown">New message received from server</string>
+    <string name="unknown_message_format">Unknown message format</string>
+    <string name="msg_token_fmt">token: %1$s</string>
+    <string name="todo" translatable="false">TODO</string>
 </resources>
